@@ -10,7 +10,7 @@ const STORE = [
 
 function generateItemElement(item) {
   return `
-    <li data-item-id="${item.id}" class="${item.hidden ? 'hidden' : ''}">
+    <li data-item-id="${item.id}">
       <span class="shopping-item js-shopping-item ${item.checked ? 'shopping-item__checked' : ''}">${item.name}</span>
       <div class="shopping-item-controls">
         <button class="shopping-item-toggle js-item-toggle">
@@ -82,8 +82,8 @@ function handleItemCheckClicked() {
 }
 
 function deleteItemFromList(itemId) {
-  const item = STORE.find(item => item.id === itemId);
-  item.hidden = !item.hidden;
+  const item = STORE.findIndex(item => item.id === itemId);
+  STORE.splice(item, 1);
  
 }
 
